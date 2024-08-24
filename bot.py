@@ -18,12 +18,13 @@ intents.members = True
 bot = commands.Bot(command_prefix='!', intents=intents)
 
 users_to_kick = [line.rstrip('\n') for line in open('users_to_kick.txt')]
+users_brudy = [line.rstrip('\n') for line in open('users_brudy.txt')]
 
 
 @bot.event
 async def on_ready():
     print(f'{bot.user} has connected to Discord!')
-    kick_users.start()
+    #kick_users.start()
     join_voice_play_brud_na_dieguska.start()
 
 
@@ -64,7 +65,7 @@ async def join_voice_play_brud_na_dieguska():
     for guild in bot.guilds:
         for channel in guild.voice_channels:
             for member in channel.members:
-                if member.name in users_to_kick:
+                if member.name in users_brudy:
                     file = get_recording('recordings')
                     file = f'recordings/{file}'
                     voice_channel = await channel.connect()
