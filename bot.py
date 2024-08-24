@@ -64,7 +64,7 @@ async def join_voice_play_brud_na_dieguska():
     for guild in bot.guilds:
         for channel in guild.voice_channels:
             for member in channel.members:
-                if member.name == 'wbatek':
+                if member.name in users_to_kick:
                     file = get_recording('recordings')
                     file = f'recordings/{file}'
                     voice_channel = await channel.connect()
