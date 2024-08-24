@@ -68,6 +68,7 @@ async def join_voice_play_brud_na_dieguska():
                 if member.name in users_brudy:
                     file = get_recording('recordings')
                     file = f'recordings/{file}'
+                    print(f'Playing {file} for {member.display_name} in {channel.name}')
                     voice_channel = await channel.connect()
 
                     def after_playing(error):
@@ -75,6 +76,7 @@ async def join_voice_play_brud_na_dieguska():
                             coro = voice_channel.disconnect()
                             fut = asyncio.run_coroutine_threadsafe(coro, bot.loop)
                             fut.result()
+                            print(f'Disconnected from {channel.name}')
 
                     voice_channel.play(discord.FFmpegPCMAudio(file), after=after_playing)
                     break
